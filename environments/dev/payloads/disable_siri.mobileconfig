@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadIdentifier</key>
+    <string>com.organization.disablesiri</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>11111111-2222-3333-4444-555555555555</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>PayloadType</key>
+            <string>com.apple.assistant.support</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>PayloadIdentifier</key>
+            <string>com.organization.disablesiri.assistant</string>
+            <key>PayloadUUID</key>
+            <string>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</string>
+            <key>Assistant Enabled</key>
+            <false/>
+        </dict>
+    </array>
+</dict>
+</plist>

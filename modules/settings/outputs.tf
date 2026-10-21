@@ -1,2 +1,4 @@
-variable "check_in_frequency" { type = number, default = 15 } # in minutes
-variable "create_log_entry"   { type = bool, default = false }
+output "check_in_frequency" {
+  value       = jamfpro_client_check_in.this.check_in_frequency
+  description = "The configured computer check-in frequency"
+}

@@ -1,9 +1,12 @@
-resource "jamfpro_policy" "this" {
-  name               = var.name
-  enabled            = var.enabled
-  category_id        = var.category_id
-  frequency          = var.frequency
-  trigger_checkin    = var.trigger_checkin
-  trigger_enrollment = var.trigger_enrollment
-  trigger_recurring  = var.trigger_recurring
+terraform {
+  required_providers {
+    jamfplatform = {
+      source = "Jamf-Concepts/jamfplatform"
+    }
+  }
+}
+
+resource "jamfplatform_pro_category" "this" {
+  name     = var.name
+  priority = var.priority
 }

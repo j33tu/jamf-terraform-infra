@@ -1,5 +1,15 @@
-resource "jamfpro_computer_check_in" "this" {
-  check_in_frequency                       = var.check_in_frequency
-  create_log_entry_for_check_in            = var.create_log_entry
-  apply_computer_level_managed_preferences = true
+terraform {
+  required_providers {
+    jamfplatform = {
+      source = "Jamf-Concepts/jamfplatform"
+    }
+  }
+}
+
+resource "jamfplatform_pro_category" "this" {
+  name     = var.name
+  priority = var.priority
+}
+resource "jamfpro_client_check_in" "this" {
+  check_in_frequency = var.check_in_frequency
 }

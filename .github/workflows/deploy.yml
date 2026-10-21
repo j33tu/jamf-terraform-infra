@@ -1,0 +1,56 @@
+name: GitOps Jamf Pro Deployment
+
+on:
+    push:
+        branches:
+            - stack-transit-dev
+            - stack-transit-main
+
+jobs:
+    deploy-dev:
+        if: github.ref == 'refs/heads/stack-transit-dev'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code Repository (code-dev)
+              uses: actions/checkout@v4
+              with:
+                  ref: code-dev
+
+            - name: Setup Terraform
+              uses: hashicorp/setup-terraform@v3
+              with:
+                  terraform_version: 1.6.0
+
+            - name: Deploy to Dev Jamf Pro
+              run: |
+                  cd environments/dev
+                  terraform init
+                  terraform apply -auto-approve
+              env:
+                  TF_VAR_jamfpro_instance_fqdn: ${{ secrets.DEV_JAMF_FQDN }}
+                  TF_VAR_client_id: ${{ secrets.DEV_JAMF_CLIENT_ID }}
+                  TF_VAR_client_secret: ${{ secrets.DEV_JAMF_CLIENT_SECRET }}
+
+    deploy-prod:
+        if: github.ref == 'refs/heads/stack-transit-main'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code Repository (code-main)
+              uses: actions/checkout@v4
+              with:
+                  ref: code-main
+
+            - name: Setup Terraform
+              uses: hashicorp/setup-terraform@v3
+              with:
+                  terraform_version: 1.6.0
+
+            - name: Deploy to Production Jamf Pro
+              run: |
+                  cd environments/prod
+                  terraform init
+                  terraform apply -auto-approve
+              env:
+                  TF_VAR_jamfpro_instance_fqdn: ${{ secrets.PROD_JAMF_FQDN }}
+                  TF_VAR_client_id: ${{ secrets.PROD_JAMF_CLIENT_ID }}
+                  TF_VAR_client_secret: ${{ secrets.PROD_JAMF_CLIENT_SECRET }}

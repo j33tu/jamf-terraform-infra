@@ -1,7 +1,12 @@
-resource "jamfpro_script" "this" {
-  name            = var.name
-  category_id     = var.category_id
-  info            = var.info
-  notes           = var.notes
-  script_contents = var.script_contents
+terraform {
+  required_providers {
+    jamfplatform = {
+      source = "Jamf-Concepts/jamfplatform"
+    }
+  }
+}
+
+resource "jamfplatform_pro_category" "this" {
+  name     = var.name
+  priority = var.priority
 }
