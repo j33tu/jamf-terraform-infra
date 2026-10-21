@@ -22,3 +22,6 @@ scripts = {
     notes           = "Tested on macOS Sequoia"
   }
 }
+jamfpro_instance_fqdn = "https://your-dev-server.jamfcloud.com"
+client_id             = "your-api-client-id"
+client_secret         = "your-api-client-secret"

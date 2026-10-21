@@ -48,3 +48,4 @@ variable "scripts" {
   description = "Map of Jamf Pro shell scripts"
   default     = {}
 }
+
